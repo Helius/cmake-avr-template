@@ -2,7 +2,6 @@
 
 #include <avr/io.h>
 #include <avr/pgmspace.h>
-#include <avr/pgmspace.h>
 #include <avr/interrupt.h>
 
 #include <util/delay.h>
@@ -29,7 +28,7 @@ int main(void)
 	
 	uart_init();
   set_receive_interrupt_handler(&uart_rx_handler);
-	printf("Hi from helius garland!\n\r");
+	printf("Hi there!\n\r");
 	
 	DDRB |= (1 << PIN5);
 
