@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include <uart.h>
+#include <misc.h>
 
 void togglePin(void)
 {
@@ -27,8 +28,8 @@ int main(void)
 {
 	
 	uart_init();
-  set_receive_interrupt_handler(&uart_rx_handler);
-	printf("Hi there!\n\r");
+	set_receive_interrupt_handler(&uart_rx_handler);
+	msg("hello world, how are you?\n\r");
 	
 	DDRB |= (1 << PIN5);
 

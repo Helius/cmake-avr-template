@@ -43,3 +43,10 @@ void printNumb(int16_t numb)
 		i++;
 	}
 }
+
+void msg(const char * str)
+{
+	while(*(str)) {
+		uart_putchar(*(str++));
+	}
+}
