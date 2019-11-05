@@ -22,7 +22,7 @@ cmake_minimum_required(VERSION 2.8)
 set(AVR_UPLOADTOOL avrdude)
 set(AVR_PROGRAMMER arduino)
 set(AVR_UPLOADTOOL_PORT /dev/ttyUSB0)
-set(AVR_UPLOADTOOL_OPTIONS -b19200)
+set(AVR_UPLOADTOOL_OPTIONS -b57600)
 
 ##########################################################################
 # AVR and fuses needs to be set
@@ -47,7 +47,7 @@ include(generic-gcc-avr.cmake)
 ##########################################################################
 # name your project
 ##########################################################################
-project(project_name)
+project(project-name)
 
 ##########################################################################
 # status messages
@@ -122,28 +122,32 @@ endif(CMAKE_BUILD_TYPE MATCHES Debug)
 # compiler options for all build types
 ##########################################################################
 add_definitions("-DF_CPU=${MCU_SPEED}")
-add_definitions("-fpack-struct")
-add_definitions("-fshort-enums")
 add_definitions("-Wall")
 add_definitions("-Werror")
 add_definitions("-pedantic")
 add_definitions("-pedantic-errors")
-add_definitions("-funsigned-char")
-add_definitions("-funsigned-bitfields")
 add_definitions("-ffunction-sections")
 add_definitions("-c")
-add_definitions("-std=gnu99")
+add_definitions("-std=c++14")
+add_definitions("-fno-exceptions")
+add_definitions("-MMD")
+#add_definitions("-fpack-struct")
+#add_definitions("-fshort-enums")
+#add_definitions("-funsigned-char")
+#add_definitions("-funsigned-bitfields")
 
 ##########################################################################
 # include search paths
 ##########################################################################
 include_directories(app)
 include_directories(hallib)
+include_directories(misclib)
 
 ##########################################################################
 # building library and application in their subdirectories
 ##########################################################################
 add_subdirectory(hallib)
+add_subdirectory(misclib)
 add_subdirectory(app)
 
 ##########################################################################

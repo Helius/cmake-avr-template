@@ -10,12 +10,12 @@
 ##########################################################################
 
 add_avr_executable(
-   project_name
-   main.c
+   project-name
+   main.cpp
 )
 
 find_library(C_LIB c)
 message(STATUS "avr-libc: ${C_LIB}")
 
-avr_target_link_libraries(project_name hallib ${C_LIB})
+avr_target_link_libraries(project-name hallib misclib ${C_LIB})
 
